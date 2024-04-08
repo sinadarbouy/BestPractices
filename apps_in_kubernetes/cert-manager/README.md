@@ -1,0 +1,5 @@
+cert-manager: This is the core component. It acts as a controller running within your Kubernetes cluster. It watches for Kubernetes resources related to certificates, like Certificate and Issuer objects. Based on these resources, cert-manager fetches certificates from various issuers, manages their lifecycle, and ensures they stay up-to-date.
+
+cert-manager-cainjector: This component is a mutating webhook that automatically injects CA (Certificate Authority) bundle information into pods. When cert-manager creates a TLS secret containing the certificate and private key, cert-manager-cainjector injects the relevant CA bundle into the pod spec. This ensures applications within the pod can trust the issued certificate.
+
+cert-manager-webhook: This component is another mutating webhook that validates Ingress resources. When an Ingress resource requiring a TLS certificate is created, cert-manager-webhook validates it. It checks if a corresponding Certificate resource exists and ensures the certificate is valid for the requested hostname(s). This validation helps prevent errors due to misconfigured Ingress resources.
